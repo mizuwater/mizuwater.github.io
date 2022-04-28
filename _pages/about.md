@@ -8,8 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-My name is Ryuhei Mizutani. I am a Ph.D. student at Department of Mathematical Informatics, Graduate School of Information Science and Technology, The University of Tokyo. <br><br>
-**Research interests**: Combinatorial optimization, Graph theory, Algorithmic game theory.
+My name is Ryuhei Mizutani. I am a Ph.D. student at Department of Mathematical Informatics, Graduate School of Information Science and Technology, The University of Tokyo.
+
+Research Interests
+========
+Combinatorial optimization, Graph theory, Algorithmic game theory.
 
 Contact
 ========
