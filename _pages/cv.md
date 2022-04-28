@@ -11,20 +11,17 @@ redirect_from:
 
 Education
 ======
-* Apr. 2022 -- present: Ph.D. student, The University of Tokyo
+* Apr. 2022 -- present: Ph.D. student, the University of Tokyo
   * Department of mathematical informatics
-* Mar. 2022: Master in information science and technology, The University of Tokyo
+* Mar. 2022: Master in information science and technology, the University of Tokyo
   * Department of mathematical informatics
-* Mar. 2020: Bachelor in engineering, Sophia University
-  * Faculty of science and technology
+* Mar. 2020: Bachelor in engineering, the University of Tokyo
+  * Department of mathematical engineering and information physics
   
 
 Work Experience
 ======
-* Apr. 2022 -- present: Fellowship for Creation of Intelligent World
-  * International Graduate Program of Innovation for Intelligent World, The University of Tokyo
-* Apr. 2022 -- present: Research Assistant in Value Exchange Engineering
-  * Research Institute for an Inclusive Society thorough Engineering, The University of Tokyo
+* Apr. 2022 -- present: SPRING GX project
 
 <!--   
 Teaching
