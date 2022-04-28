@@ -18,7 +18,7 @@ ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp
 link
 ========
 - [7th lab](https://www.opt.mist.i.u-tokyo.ac.jp/)
-- [my blog](https://mizuwater0.hatenablog.com/)
+- [My blog (in Japanese)](https://mizuwater0.hatenablog.com/)
 
 
 <!-- 
