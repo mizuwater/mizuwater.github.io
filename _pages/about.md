@@ -16,7 +16,7 @@ Contact
 ========
 ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp
 
-link
+ink
 ========
 - [7th lab](https://www.opt.mist.i.u-tokyo.ac.jp/)
 - [My blog (in Japanese)](https://mizuwater0.hatenablog.com/)
