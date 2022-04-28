@@ -7,13 +7,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Akatsuki Nishioka"
+title                    : "Ryuhei Mizutani"
 title_separator          : "-"
-name                     : &name "Akatsuki Nishioka"
+name                     : &name "Ryuhei Mizutani"
 description              : &description " student at The University of Tokyo"
-url                      : https://nishioka97.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://mizuwater.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "nishioka97/nishioka97.github.io"
+repository               : "mizuwater/mizuwater.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -80,14 +80,14 @@ analytics:
 
 # Site Author
 author:
-  name             : "Akatsuki Nishioka"
-  avatar           : "nishioka.png"
+  name             : "Ryuhei Mizutani"
+  avatar           : #"nishioka.png"
   bio              : "Ph.D. student at The University of Tokyo"
   location         : "Tokyo, Japan"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : #"http://yourfullgooglescholarurl.com"
-  email            :
+  email            : "ryuhei_mizutani[at]mist.i.u-tokyo.ac.jp" 
   researchgate     : 
   uri              :
   bitbucket        :
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "nishioka97"
+  github           : 
   google_plus      :
   keybase          :
   instagram        :
