@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-My name is Ryuhei Mizutani. I am a Ph.D. student at Department of Mathematical Informatics, Graduate School of Information Science and Technology, the University of Tokyo.
+My name is Ryuhei Mizutani. I am a Ph.D. student at Department of Mathematical Informatics, Graduate School of Information Science and Technology, the University of Tokyo. My supervisor is Satoru Iwata.
 
 **Research Interests**: Combinatorial optimization, Graph theory, Algorithmic game theory.
 
