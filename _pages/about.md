@@ -8,13 +8,16 @@ redirect_from:
   - /about.html
 ---
 
-My name is Akatsuki Nishioka (西岡 暁). I am a Ph.D. student at Department of Mathematical Informatics, Graduate School of Information Science and Technology, The University of Tokyo, Japan. My research interests include topology optimization and mathematical optimization.
+My name is Ryuhei Mizutani. I am a Ph.D. student at Department of Mathematical Informatics, Graduate School of Information Science and Technology, The University of Tokyo, Japan. My research interests include combinatorial optimization and graph theory.
 
-Supervisor: Professor [Yoshihiro Kannno](https://www.or.mist.i.u-tokyo.ac.jp/kanno/)
+link
+========
+https://www.opt.mist.i.u-tokyo.ac.jp/
 
 Contact
 ========
-akatsuki_nishioka [at] mist.i.u-tokyo.ac.jp
+ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp
+
 
 <!-- 
 Recent News
