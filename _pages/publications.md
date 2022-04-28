@@ -10,9 +10,10 @@ Preprint
 ======
  -->
 
-Papers
+Refereed Journals and Conferences
 ======
-1. <ins>A. Nishioka</ins> and Y. Kanno. Accelerated projected gradient method with adaptive step size for compliance minimization problem, JSIAM Letters, vol. 13 (2021), pp. 33-36.
+1. <ins>	H. Hirai</ins> and R. Mizutani. Minimum 0-extension problems on directed metrics, ***Discrete Optimization,*** vol. 40 (2021).
+2. <ins>	H. Hirai</ins> and R. Mizutani. Minimum 0-extension problems on directed metrics, ***Mathematical Foundations of Computer Science (MFCS 2020),*** 46:1--46:13.
 
 <!-- 
 Proceedings
