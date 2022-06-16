@@ -10,7 +10,7 @@ redirect_from:
 
 My name is Ryuhei Mizutani. I am a Ph.D. student at Department of Mathematical Informatics, Graduate School of Information Science and Technology, the University of Tokyo. My supervisor is Satoru Iwata.
 
-**Research Interests**: Combinatorial optimization, Graph theory, Algorithmic game theory.
+**Research Interests**: Combinatorial Optimization, Graph Theory, Matroid Theory.
 
 Contact
 ========
@@ -18,8 +18,8 @@ ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp
 
 Link
 ========
-- [7th lab](https://www.opt.mist.i.u-tokyo.ac.jp/)
-- [My blog (in Japanese)](https://mizuwater0.hatenablog.com/)
+- [7th Lab](https://www.opt.mist.i.u-tokyo.ac.jp/)
+- [My Blog (in Japanese)](https://mizuwater0.hatenablog.com/)
 
 
 <!-- 
