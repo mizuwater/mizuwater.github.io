@@ -3,10 +3,10 @@ main:
   # - title: "News"
   #  url: /News/   
   
-  - title: "Curriculum Vitae"
+  - title: "C. V."
     url: /cv/
     
-  - title: "Publications"
+  - title: "Papers"
     url: /publications/
 
   - title: "Talks"
