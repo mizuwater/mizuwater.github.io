@@ -12,7 +12,7 @@ Refereed Journals and Conferences
 
 Preprints
 ======
-- 
+- <ins>	R. Mizutani</ins>. Supermodular Extension of Vizing's Edge-Coloring Theorem.
 
 Domestic Conferences
 ======
