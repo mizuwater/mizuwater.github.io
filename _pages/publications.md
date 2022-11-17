@@ -9,16 +9,11 @@ Refereed Journals and Conferences
 ======
 2. H. Hirai and <ins>	R. Mizutani</ins>. Minimum 0-extension problems on directed metrics, *Discrete Optimization,* 40 (2021).
 1. H. Hirai and <ins>	R. Mizutani</ins>. Minimum 0-extension problems on directed metrics, *Mathematical Foundations of Computer Science (MFCS 2020),* 46:1--46:13.
-<section>
-	<h2>番号付きリスト</h2>
-	<ol reversed>
-		<li>リスト1</li>
-		<li>リスト2</li>
-		<li>リスト3</li>
-		<li>リスト4</li>
-		<li>リスト5</li>
-	</ol>
-</section>
+<ol reversed="reversed">
+<li>リスト項目1</li>
+<li>リスト項目2</li>
+<li>リスト項目3</li>
+</ol>
 
 Preprints
 ======
