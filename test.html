@@ -10,7 +10,7 @@
 
   <style>
     :root{
-      --accent: #1b7f5a;
+      --accent: #1b7f5a;      /* green */
       --accent-2: #0f5f43;
 
       --bg: #f6f7f7;
@@ -21,15 +21,26 @@
       --shadow: 0 8px 24px rgba(16,24,40,.08);
       --radius: 14px;
       --maxw: 980px;
-
-      /* 固定ヘッダー無しなので小さめ */
       --header-offset: 18px;
+
+      /* link badge colors */
+      --tag-arxiv-bg: rgba(220, 38, 38, .10);   /* red */
+      --tag-arxiv-bd: rgba(220, 38, 38, .30);
+      --tag-arxiv-tx: #b91c1c;
+
+      --tag-journal-bg: rgba(16, 185, 129, .12); /* green */
+      --tag-journal-bd: rgba(16, 185, 129, .32);
+      --tag-journal-tx: #047857;
+
+      --tag-conf-bg: rgba(37, 99, 235, .10);    /* blue */
+      --tag-conf-bd: rgba(37, 99, 235, .30);
+      --tag-conf-tx: #1d4ed8;
     }
 
     *{ box-sizing: border-box; }
     html{ scroll-behavior: smooth; }
 
-    /* ✅ 全体文字サイズを論文欄と同じ（16px）に */
+    /* ✅ 全体文字サイズを少し大きく（18px） */
     body{
       margin: 0;
       background: var(--bg);
@@ -38,7 +49,7 @@
                    "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
                    "Yu Gothic", "Meiryo", Arial, sans-serif;
       line-height: 1.65;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     a{
@@ -48,7 +59,6 @@
     }
     a:hover{ text-decoration: underline; }
 
-    /* 固定しない・細めのヘッダー */
     header{
       position: static;
       background: rgba(255,255,255,.92);
@@ -66,7 +76,7 @@
 
     .brand h1{
       margin: 0;
-      font-size: 24px;
+      font-size: 26px;
       line-height: 1.15;
       font-weight: 900;
       letter-spacing: .2px;
@@ -77,7 +87,7 @@
     .brand h1 span{
       font-weight: 700;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 18px;
     }
 
     nav ul{
@@ -131,7 +141,7 @@
 
     section h2{
       margin: 0 0 8px 0;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.25;
       display: flex;
       align-items: center;
@@ -150,9 +160,9 @@
     ul{ margin: 0; padding-left: 1.15em; }
     li{ margin: 8px 0; }
 
-    /* 論文等 */
+    /* pubs: 本文と同じサイズのまま */
     .pubs{
-      font-size: 16px;   /* bodyと同じ */
+      font-size: 18px;
       line-height: 1.65;
     }
     .pubs li{
@@ -162,24 +172,38 @@
     .pubs li:last-child{ border-bottom: none; }
     .pubs b{ font-weight: 800; }
 
-    /* ✅ ボタン */
-    .links a.smallbtn{
+    /* ✅ リンクボタン：小さく＆種別で色分け */
+    .links{ display: inline; }
+    .tagbtn{
       display:inline-flex;
       align-items:center;
-      gap: 8px;
-      margin: 5px 8px 0 0;
-      padding: 6px 10px;
+      padding: 3px 8px;          /* ← 小さく */
       border-radius: 999px;
-      border: 1px solid rgba(27,127,90,.30);
-      background: rgba(27,127,90,.08);
-      font-size: 13px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 12px;           /* ← 小さく */
       font-weight: 700;
-      color: var(--accent-2);
+      line-height: 1.2;
       text-decoration: none;
+      margin: 5px 6px 0 0;
+      vertical-align: middle;
     }
-    .links a.smallbtn:hover{
-      background: rgba(27,127,90,.14);
-      text-decoration: none;
+    .tagbtn:hover{ text-decoration: none; filter: brightness(0.98); }
+
+    .tagbtn.arxiv{
+      background: var(--tag-arxiv-bg);
+      border-color: var(--tag-arxiv-bd);
+      color: var(--tag-arxiv-tx);
+    }
+    .tagbtn.journal{
+      background: var(--tag-journal-bg);
+      border-color: var(--tag-journal-bd);
+      color: var(--tag-journal-tx);
+    }
+    .tagbtn.conf{
+      background: var(--tag-conf-bg);
+      border-color: var(--tag-conf-bd);
+      color: var(--tag-conf-tx);
     }
 
     footer{
@@ -208,7 +232,7 @@
         <ul>
           <li><a class="pill" href="index_en.html">English Version</a></li>
           <li><a class="pill" href="#paper">論文</a></li>
-          <li><a class="pill" href="#preprint">プレプリント</a></li>
+          <!-- ✅ 上部リンクからプレプリントを削除 -->
           <li><a class="pill" href="#international">発表</a></li>
           <li><a class="pill" href="#link">リンク</a></li>
         </ul>
@@ -245,7 +269,7 @@
           <b>Position Fair Mechanisms Allocating Indivisible Goods.</b><br>
           40th Annual AAAI Conference on Artificial Intelligence (AAAI 2026), to appear.
           <span class="links">
-            <a class="smallbtn" href="https://arxiv.org/abs/2409.06423" target="_blank" rel="noopener">arXiv</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2409.06423" target="_blank" rel="noopener">arXiv</a>
           </span>
         </li>
 
@@ -254,8 +278,8 @@
           <b>Supermodular Extension of Vizing’s Edge-Coloring Theorem</b>.<br>
           SIAM Journal on Discrete Mathematics, 39:4 (2025), pp. 2275–2295.
           <span class="links">
-            <a class="smallbtn" href="https://epubs.siam.org/doi/10.1137/24M1636253" target="_blank" rel="noopener">Journal</a>
-            <a class="smallbtn" href="https://arxiv.org/abs/2211.07150" target="_blank" rel="noopener">arXiv</a>
+            <a class="tagbtn journal" href="https://epubs.siam.org/doi/10.1137/24M1636253" target="_blank" rel="noopener">Journal</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2211.07150" target="_blank" rel="noopener">arXiv</a>
           </span>
         </li>
 
@@ -265,8 +289,8 @@
           52nd EATCS International Colloquium on Automata, Languages, and Programming (ICALP 2025),
           pp. 85:1–85:17.
           <span class="links">
-            <a class="smallbtn" href="https://doi.org/10.4230/LIPIcs.ICALP.2025.85" target="_blank" rel="noopener">Proceeding</a>
-            <a class="smallbtn" href="https://arxiv.org/html/2411.06771" target="_blank" rel="noopener">arXiv</a>
+            <a class="tagbtn conf" href="https://doi.org/10.4230/LIPIcs.ICALP.2025.85" target="_blank" rel="noopener">Conference</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/html/2411.06771" target="_blank" rel="noopener">arXiv</a>
           </span>
         </li>
 
@@ -276,8 +300,8 @@
           51st EATCS International Colloquium on Automata, Languages, and Programming (ICALP 2024),
           pp. 86:1–86:20.
           <span class="links">
-            <a class="smallbtn" href="https://doi.org/10.4230/LIPIcs.ICALP.2024.86" target="_blank" rel="noopener">Proceeding</a>
-            <a class="smallbtn" href="https://arxiv.org/abs/2402.16259" target="_blank" rel="noopener">arXiv</a>
+            <a class="tagbtn conf" href="https://doi.org/10.4230/LIPIcs.ICALP.2024.86" target="_blank" rel="noopener">Conference</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2402.16259" target="_blank" rel="noopener">arXiv</a>
           </span>
         </li>
 
@@ -287,7 +311,7 @@
           25th Conference on Integer Programming and Combinatorial Optimization (IPCO 2024),
           pp. 323–336.
           <span class="links">
-            <a class="smallbtn" href="https://doi.org/10.1007/978-3-031-59835-7_24" target="_blank" rel="noopener">Proceeding</a>
+            <a class="tagbtn conf" href="https://doi.org/10.1007/978-3-031-59835-7_24" target="_blank" rel="noopener">Conference</a>
           </span>
         </li>
 
@@ -296,14 +320,14 @@
           <b>Minimum 0-Extension Problems on Directed Metrics</b>.<br>
           Discrete Optimization, 40 (2021), 25 pages.
           <span class="links">
-            <a class="smallbtn" href="https://doi.org/10.1016/j.disopt.2021.100642" target="_blank" rel="noopener">Journal</a>
-            <a class="smallbtn" href="https://arxiv.org/abs/2006.00153" target="_blank" rel="noopener">arXiv</a>
+            <a class="tagbtn journal" href="https://doi.org/10.1016/j.disopt.2021.100642" target="_blank" rel="noopener">Journal</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2006.00153" target="_blank" rel="noopener">arXiv</a>
           </span><br>
           <span style="color: var(--muted); font-size: 13px;">
             *A preliminary version has appeared in Mathematical Foundations of Computer Science (MFCS 2020), pp. 46:1–46:13.
           </span>
           <span class="links">
-            <a class="smallbtn" href="https://doi.org/10.4230/LIPIcs.MFCS.2020.46" target="_blank" rel="noopener">Proceeding</a>
+            <a class="tagbtn conf" href="https://doi.org/10.4230/LIPIcs.MFCS.2020.46" target="_blank" rel="noopener">Conference</a>
           </span>
         </li>
       </ul>
@@ -317,7 +341,7 @@
           <b>An Approximation Algorithm for Monotone Submodular Cost Allocation.</b><br>
           arXiv preprints, arXiv:2511.00470, 2025.
           <span class="links">
-            <a class="smallbtn" href="https://arxiv.org/abs/2511.00470" target="_blank" rel="noopener">arXiv</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2511.00470" target="_blank" rel="noopener">arXiv</a>
           </span>
         </li>
 
@@ -326,7 +350,7 @@
           <b>A Polynomial Algorithm for Minimizing <span>\( k \)</span>-Distant Submodular Functions.</b><br>
           arXiv preprints, arXiv:2407.05127, 2024.
           <span class="links">
-            <a class="smallbtn" href="https://arxiv.org/abs/2407.05127" target="_blank" rel="noopener">arXiv</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2407.05127" target="_blank" rel="noopener">arXiv</a>
           </span>
         </li>
       </ul>
