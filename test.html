@@ -40,7 +40,6 @@
     *{ box-sizing: border-box; }
     html{ scroll-behavior: auto; }
 
-    /* ✅ 全体文字サイズを少し大きく（18px） */
     body{
       margin: 0;
       background: var(--bg);
@@ -118,6 +117,10 @@
       background: rgba(27,127,90,.06);
       text-decoration: none;
     }
+    .pill:focus-visible{
+      outline: 3px solid rgba(31,41,55,.18);
+      outline-offset: 2px;
+    }
 
     main{
       max-width: var(--maxw);
@@ -148,7 +151,6 @@
     ul{ margin: 0; padding-left: 1.15em; }
     li{ margin: 8px 0; }
 
-    /* pubs: 本文と同じサイズのまま */
     .pubs{
       font-size: 18px;
       line-height: 1.65;
@@ -160,23 +162,32 @@
     .pubs li:last-child{ border-bottom: none; }
     .pubs b{ font-weight: 800; }
 
-    /* ✅ リンクボタン：小さく＆種別で色分け */
+    /* ✅ リンクボタン：小さく＆種別で色分け + hoverで分かるように */
     .links{ display: inline; }
     .tagbtn{
       display:inline-flex;
       align-items:center;
-      padding: 3px 8px;          /* ← 小さく */
+      padding: 3px 8px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: #fff;
-      font-size: 12px;           /* ← 小さく */
+      font-size: 12px;
       font-weight: 700;
       line-height: 1.2;
       text-decoration: none;
       margin: 5px 6px 0 0;
       vertical-align: middle;
+      transition: transform .08s ease, border-color .2s ease, filter .2s ease, background .2s ease;
     }
-    .tagbtn:hover{ text-decoration: none; filter: brightness(0.98); }
+    .tagbtn:hover{
+      transform: translateY(-1px);
+      filter: brightness(0.97);
+      text-decoration: none;
+    }
+    .tagbtn:focus-visible{
+      outline: 3px solid rgba(31,41,55,.18);
+      outline-offset: 2px;
+    }
 
     .tagbtn.arxiv{
       background: var(--tag-arxiv-bg);
@@ -193,6 +204,11 @@
       border-color: var(--tag-conf-bd);
       color: var(--tag-conf-tx);
     }
+
+    /* hover時に枠色を濃くして“ホバーした感”を強める */
+    .tagbtn.arxiv:hover{ border-color: rgba(220, 38, 38, .55); }
+    .tagbtn.journal:hover{ border-color: rgba(16, 185, 129, .60); }
+    .tagbtn.conf:hover{ border-color: rgba(37, 99, 235, .55); }
 
     footer{
       max-width: var(--maxw);
@@ -220,7 +236,6 @@
         <ul>
           <li><a class="pill" href="index_en.html">English Version</a></li>
           <li><a class="pill" href="#paper">論文</a></li>
-          <!-- ✅ 上部リンクからプレプリントを削除 -->
           <li><a class="pill" href="#international">発表</a></li>
           <li><a class="pill" href="#link">リンク</a></li>
         </ul>
@@ -230,7 +245,7 @@
 
   <main id="content">
     <div class="topcard" id="about">
-      <p>慶應義塾大学大学院理工学研究科の研究員です．（ERATO 小島マーケットデザインプロジェクト 離散数学グループ所属）</p>
+      <p>慶應義塾大学 大学院理工学研究科 研究員（ERATO 小島マーケットデザインプロジェクト 離散数学グループ所属）</p>
       <p>連絡先: mizutani [at] math.keio.ac.jp<br><s>ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp</s></p>
     </div>
 
@@ -312,7 +327,6 @@
             <a class="tagbtn arxiv" href="https://arxiv.org/abs/2006.00153" target="_blank" rel="noopener">arXiv</a>
           </span><br>
           <i>Proceedings of the 45th International Symposium on Mathematical Foundations of Computer Science (MFCS 2020)</i>, pp. 46:1–46:13.
-          </span>
           <span class="links">
             <a class="tagbtn conf" href="https://doi.org/10.4230/LIPIcs.MFCS.2020.46" target="_blank" rel="noopener">Conference</a>
           </span>
@@ -368,7 +382,7 @@
         <li>水谷隆平．<br><b>k-距離劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>COMP-AFSA学生シンポジウム，東京都市大学，東京，2025年3月．</li>
         <li>水谷隆平．<br><b>k-距離劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>日本オペレーションズ・リサーチ学会 2025年春季研究発表会，成蹊大学，東京，2025年3月．</li>
         <li>水谷隆平，吉田勇輝．<br><b>2/3-劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2024，筑波大学，茨城，2024年5月．</li>
-        <li>水谷隆平，吉田勇輝．<br><b>2/3-劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>日本応用数理学会 第20回研究部会連合発表会，長岡技術科学大学，新潟，2024年3月．</li>
+        <li>水谷隆平，吉田勇輝．<br><b>2/3-劣モジュラ関数最小化問題に対する多項式時間アルゴリズラ関数の最小化問題に対する多項式時間アルゴリズム．</b><br>日本応用数理学会 第20回研究部会連合発表会，長岡技術科学大学，新潟，2024年3月．</li>
         <li>水谷隆平．<br><b>三重劣モジュラ関数の諸性質．</b><br>最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2023，筑波大学，茨城，2023年5月．</li>
         <li>水谷隆平．<br><b>優モジュラ版Vizingの辺彩色定理．</b><br>離散数学とその応用研究集会 (JCCA 2022)，成蹊大学，東京，2022年8月．</li>
         <li>水谷隆平．<br><b>Vizingの辺彩色定理の優モジュラ的拡張．</b><br>最適化手法とアルゴリズム (SOMA) —未来を担う若手研究者の集い 2022—，東京大学，東京，2022年6月．</li>
