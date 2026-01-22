@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ryuhei Mizutani</title>
 
-  <!-- MathJax (必要なら残す) -->
+  <!-- MathJax（必要なら残す） -->
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
     :root{
-      /* ✅ 緑のさし色（ここを好みで調整） */
+      /* 緑のさし色（好みで調整） */
       --accent: #1b7f5a;
       --accent-2: #0f5f43;
+
       --bg: #f6f7f7;
       --card: #ffffff;
       --text: #1f2937;
@@ -33,7 +34,7 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto,
                    "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
                    "Yu Gothic", "Meiryo", Arial, sans-serif;
-      line-height: 1.7;
+      line-height: 1.75;
       font-size: 18px;
     }
 
@@ -44,25 +45,11 @@
     }
     a:hover{ text-decoration: underline; }
 
-    /* Skip link (アクセシビリティ) */
-    .skip-link{
-      position: absolute;
-      top: -40px;
-      left: 12px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 8px 10px;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      z-index: 999;
-    }
-    .skip-link:focus{ top: 12px; }
-
     header{
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
@@ -77,12 +64,6 @@
       justify-content: space-between;
     }
 
-    .brand{
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
     .brand h1{
       margin: 0;
       font-size: 20px;
@@ -93,16 +74,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .brand .tag{
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
 
-    /* 右側ナビ */
     nav ul{
       list-style: none;
       margin: 0;
@@ -116,7 +88,6 @@
     .pill{
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
@@ -124,6 +95,7 @@
       transition: transform .08s ease, border-color .2s ease, background .2s ease;
       font-size: 14px;
       white-space: nowrap;
+      color: var(--text);
     }
     .pill:hover{
       transform: translateY(-1px);
@@ -144,40 +116,24 @@
       padding: 18px;
     }
 
-    /* Hero */
-    .hero{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 10px;
-      margin-bottom: 18px;
-    }
-    .hero-card{
+    /* カード共通 */
+    section, .topcard{
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 18px;
-      position: relative;
-      overflow: hidden;
+      margin: 14px 0;
     }
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset: 0;
-      background: radial-gradient(600px 120px at 18% 0%, rgba(27,127,90,.16), transparent 60%);
-      pointer-events: none;
-    }
-    .hero p{
-      margin: 0;
-      position: relative;
-    }
+
+    /* ✅ もや（radial-gradient）を削除：topcardは完全フラットに */
+    .topcard p{ margin: 0; }
+
     .contact{
       display:flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 12px;
-      position: relative;
     }
     .chip{
       display:inline-flex;
@@ -200,16 +156,6 @@
     }
     s{ color: #9ca3af; }
 
-    /* セクション：カード */
-    section{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      margin: 14px 0;
-    }
-
     section h2{
       margin: 0 0 10px 0;
       font-size: 18px;
@@ -228,30 +174,22 @@
       flex: 0 0 auto;
     }
 
-    .lead{
-      color: var(--muted);
-      margin: 0 0 8px 0;
-      font-size: 15px;
-    }
+    /* ✅ 興味の “下の空白” を減らす：余計なlead行を削り、pのマージンも制御 */
+    #interest{ padding-bottom: 16px; }
+    #interest p{ margin: 0; }
 
-    /* リストを読みやすく */
     ul{
       margin: 0;
       padding-left: 1.2em;
     }
-    li{
-      margin: 10px 0;
-    }
+    li{ margin: 10px 0; }
 
-    /* 論文リスト：行間・区切り */
     .pubs li{
       padding: 10px 0;
       border-bottom: 1px dashed rgba(107,114,128,.25);
     }
     .pubs li:last-child{ border-bottom: none; }
-    .pubs b{ color: var(--text); }
 
-    /* リンクボタン風 */
     .links a.btn{
       display:inline-flex;
       align-items:center;
@@ -271,7 +209,6 @@
       text-decoration: none;
     }
 
-    /* 2カラム（広い画面） */
     @media (min-width: 920px){
       .grid-2{
         display:grid;
@@ -279,10 +216,8 @@
         gap: 14px;
         align-items: start;
       }
-      .hero{ grid-template-columns: 1fr; }
     }
 
-    /* フッター（簡易） */
     footer{
       max-width: var(--maxw);
       margin: 0 auto;
@@ -291,25 +226,21 @@
       font-size: 13px;
     }
 
-    /* 印刷時 */
     @media print{
       header{ position: static; background: white; }
-      section, .hero-card{ box-shadow: none; }
+      section, .topcard{ box-shadow: none; }
       body{ background: white; }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#content">本文へスキップ</a>
-
   <header>
     <div class="header-inner">
       <div class="brand">
         <h1>水谷隆平 <span style="font-weight:700; color:var(--muted);">(Ryuhei Mizutani)</span></h1>
-        <p class="tag">Combinatorial Optimization / Discrete Mathematics</p>
       </div>
-      <nav aria-label="外部リンク">
+      <nav aria-label="ページ内リンク">
         <ul>
           <li><a class="pill primary" href="index_en.html">English Version</a></li>
           <li><a class="pill" href="#paper">論文</a></li>
@@ -322,21 +253,18 @@
   </header>
 
   <main id="content">
-    <div class="hero">
-      <div class="hero-card" id="about">
-        <p>慶應義塾大学大学院理工学研究科の研究員です．（ERATO 小島マーケットデザインプロジェクト 離散数学グループ所属）</p>
-        <div class="contact" aria-label="連絡先">
-          <span class="chip">連絡先: <code>mizutani [at] math.keio.ac.jp</code></span>
-          <span class="chip"><s>ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp</s></span>
-        </div>
+    <div class="topcard" id="about">
+      <p>慶應義塾大学大学院理工学研究科の研究員です．（ERATO 小島マーケットデザインプロジェクト 離散数学グループ所属）</p>
+      <div class="contact" aria-label="連絡先">
+        <span class="chip">連絡先: <code>mizutani [at] math.keio.ac.jp</code></span>
+        <span class="chip"><s>ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp</s></span>
       </div>
     </div>
 
     <div class="grid-2">
       <section id="interest">
         <h2>興味</h2>
-        <p class="lead">研究キーワード</p>
-        組合せ最適化，離散構造，マトロイド理論，グラフ理論，ゲーム理論．
+        <p>組合せ最適化，離散構造，マトロイド理論，グラフ理論，ゲーム理論．</p>
       </section>
 
       <section id="keireki">
@@ -389,7 +317,7 @@
           51st EATCS International Colloquium on Automata, Languages, and Programming (ICALP 2024),
           pp. 86:1–86:20.
           <span class="links">
-            <a class="btn" href="https://doi.org/10.4230/LIPIcs.ICALP.2024.86" target="_blank" rel="noopener">Proceeding</a>
+            <a class="btn" href="https://doi.org/10.4230/LIPIcs.ICALP.2025.85" target="_blank" rel="noopener">Proceeding</a>
             <a class="btn" href="https://arxiv.org/abs/2402.16259" target="_blank" rel="noopener">arXiv</a>
           </span>
         </li>
@@ -412,7 +340,7 @@
             <a class="btn" href="https://doi.org/10.1016/j.disopt.2021.100642" target="_blank" rel="noopener">Journal</a>
             <a class="btn" href="https://arxiv.org/abs/2006.00153" target="_blank" rel="noopener">arXiv</a>
           </span>
-          <div class="lead" style="margin-top:8px;">
+          <div style="margin-top:8px; color: var(--muted); font-size: 14px;">
             *A preliminary version has appeared in MFCS 2020, pp. 46:1–46:13.
             <a class="btn" href="https://doi.org/10.4230/LIPIcs.MFCS.2020.46" target="_blank" rel="noopener" style="display:inline-flex; margin-left:8px;">Proceeding</a>
           </div>
@@ -492,9 +420,7 @@
   </footer>
 
   <script>
-    // フッターの年だけ自動
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
