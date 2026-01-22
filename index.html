@@ -1,157 +1,419 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<title>Ryuhei Mizutani</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<style>
-		body {
-			background-color: #F6F6F6;
-			color: #333333;
-			font-family: Arial, sans-serif;
-			font-size: 20px;
-			line-height: 1.5;
-			margin: 0;
-			padding: 0;
-		}
-		header {
-			background-color: #4A4A4A;
-			color: #FFFFFF;
-			padding: 20px;
-		}
-		h1 {
-			margin: 0;
-		}
-		h2 {
-			color: #4A4A4A;
-			font-size: 22px;
-			margin-bottom: 10px;
-		}
-		nav ul {
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			text-align: right;
-		}
-		nav ul li {
-			display: inline-block;
-			margin-left: 20px;
-		}
-		nav ul li a {
-			color: #FFFFFF;
-			text-decoration: none;
-			transition: color 0.2s;
-		}
-		nav ul li a:hover {
-			color: #C4C4C4;
-		}
-		main {
-			margin: 20px;
-		}
-		section {
-			margin-bottom: 15px;
-		}
-		section:last-of-type {
-			margin-bottom: 0;
-		}
-		ul {
-			margin: 0;
-			padding: 0;
-		}
-		li {
-			margin-bottom: 10px;
-			margin-left: 40px
-		}
-	</style>
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryuhei Mizutani</title>
+
+  <!-- MathJax（必要なら残す） -->
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{
+      --accent: #1b7f5a;      /* green */
+      --accent-2: #0f5f43;
+
+      --bg: #f6f7f7;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 8px 24px rgba(16,24,40,.08);
+      --radius: 14px;
+      --maxw: 980px;
+      --header-offset: 18px;
+
+      /* link badge colors */
+      --tag-arxiv-bg: rgba(220, 38, 38, .10);   /* red */
+      --tag-arxiv-bd: rgba(220, 38, 38, .30);
+      --tag-arxiv-tx: #b91c1c;
+
+      --tag-journal-bg: rgba(16, 185, 129, .12); /* green */
+      --tag-journal-bd: rgba(16, 185, 129, .32);
+      --tag-journal-tx: #047857;
+
+      --tag-conf-bg: rgba(37, 99, 235, .10);    /* blue */
+      --tag-conf-bd: rgba(37, 99, 235, .30);
+      --tag-conf-tx: #1d4ed8;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: auto; }
+
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+                   "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+                   "Yu Gothic", "Meiryo", Arial, sans-serif;
+      line-height: 1.65;
+      font-size: 18px;
+    }
+
+    a{
+      color: var(--accent-2);
+      text-decoration: none;
+      text-underline-offset: 3px;
+    }
+    a:hover{ text-decoration: underline; }
+
+    header{
+      position: static;
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    /* ✅ 名前をもう少し大きく */
+    .brand h1{
+      margin: 0;
+      font-size: 30px;  /* 26px → 30px */
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand h1 span{
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    nav ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: transform .08s ease, border-color .2s ease, background .2s ease;
+      font-size: 13px;
+      white-space: nowrap;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(27,127,90,.35);
+      background: rgba(27,127,90,.06);
+      text-decoration: none;
+    }
+    .pill:focus-visible{
+      outline: 3px solid rgba(31,41,55,.18);
+      outline-offset: 2px;
+    }
+
+    main{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px 18px;
+    }
+
+    section, .topcard{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      margin: 12px 0;
+    }
+
+    section{ scroll-margin-top: var(--header-offset); }
+
+    .topcard p{ margin: 0; }
+    .topcard p + p{ margin-top: 8px; }
+
+    section h2{
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    ul{ margin: 0; padding-left: 1.15em; }
+    li{ margin: 8px 0; }
+
+    .pubs{
+      font-size: 18px;
+      line-height: 1.65;
+    }
+    .pubs li{
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(107,114,128,.25);
+    }
+    .pubs li:last-child{ border-bottom: none; }
+    .pubs b{ font-weight: 800; }
+
+    .links{ display: inline; }
+    .tagbtn{
+      display:inline-flex;
+      align-items:center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      margin: 5px 6px 0 0;
+      vertical-align: middle;
+      transition: transform .08s ease, border-color .2s ease, filter .2s ease, background .2s ease;
+    }
+    .tagbtn:hover{
+      transform: translateY(-1px);
+      filter: brightness(0.97);
+      text-decoration: none;
+    }
+    .tagbtn:focus-visible{
+      outline: 3px solid rgba(31,41,55,.18);
+      outline-offset: 2px;
+    }
+
+    .tagbtn.arxiv{
+      background: var(--tag-arxiv-bg);
+      border-color: var(--tag-arxiv-bd);
+      color: var(--tag-arxiv-tx);
+    }
+    .tagbtn.journal{
+      background: var(--tag-journal-bg);
+      border-color: var(--tag-journal-bd);
+      color: var(--tag-journal-tx);
+    }
+    .tagbtn.conf{
+      background: var(--tag-conf-bg);
+      border-color: var(--tag-conf-bd);
+      color: var(--tag-conf-tx);
+    }
+
+    .tagbtn.arxiv:hover{ border-color: rgba(220, 38, 38, .55); }
+    .tagbtn.journal:hover{ border-color: rgba(16, 185, 129, .60); }
+    .tagbtn.conf:hover{ border-color: rgba(37, 99, 235, .55); }
+
+    footer{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 10px 18px 24px 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media print{
+      section, .topcard{ box-shadow: none; }
+      body{ background: white; }
+    }
+  </style>
 </head>
+
 <body>
-	<header>
-		<h1>水谷隆平 (Ryuhei Mizutani)</h1>
-		<nav>
-			<ul>
-				<li><a href="index_en.html">English Version</a></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<section id="about">
-			<p>慶應義塾大学大学院理工学研究科の研究員です．（ERATO 小島マーケットデザインプロジェクト 離散数学グループ所属）</p>
-			<p>連絡先: mizutani [at] math.keio.ac.jp<br><s>ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp</s></p>
-		</section>
-		<section id="interest">
-			<h2>興味</h2>
-			組合せ最適化，離散構造，マトロイド理論，グラフ理論，ゲーム理論．
-		</section>
-		<section id="keireki">
-			<h2>経歴</h2>
-			<ul>
-				<li>2025年4月- 慶應義塾大学大学院理工学研究科 研究員</li>
-				<li>2025年3月 東京大学 大学院情報理工学系研究科 数理情報学専攻 博士課程 修了 博士（情報理工学）取得</li>
-				<li>2022年3月 東京大学 大学院情報理工学系研究科 数理情報学専攻 修士課程 修了</li>
-				<li>2020年3月 東京大学 工学部計数工学科 卒業</li>
-            </ul>
-		</section>
-		<section id="paper">
-			<h2>査読付き論文</h2>
-			<ul>
-				<li>Ryoga Mahara, Ryuhei Mizutani, Taihei Oki, Tomohiko Yokoyama. <br><b>Position Fair Mechanisms Allocating Indivisible Goods.</b> <br>40th Annual AAAI Conference on Artificial Intelligence (AAAI 2026), to appear. [<a href= "https://arxiv.org/abs/2409.06423" target="_blank" >arXiv</a>]</li>
-				<li>Ryuhei Mizutani. <br><b>Supermodular Extension of Vizing’s Edge-Coloring Theorem</b>. <br>SIAM Journal on Discrete Mathematics, 39:4 (2025), pp. 2275–2295. [<a href= "https://epubs.siam.org/doi/10.1137/24M1636253" target="_blank" >Journal</a>] [<a href= "https://arxiv.org/abs/2211.07150" target="_blank" >arXiv</a>]</li>
-				<li>Dániel Garamvölgyi, Ryuhei Mizutani, Taihei Oki, Tamás Schwarcz, Yutaro Yamaguchi. <br><b>Towards the Proximity Conjecture on Group-Labeled Matroids</b>. <br>52nd EATCS International Colloquium on Automata, Languages, and Programming (ICALP 2025), pp. 85:1–85:17. [<a href= "https://doi.org/10.4230/LIPIcs.ICALP.2025.85" target="_blank" >Proceeding</a>] [<a href= "https://arxiv.org/html/2411.06771" target="_blank" >arXiv</a>]</li>
-				<li>Florian Hörsch, András Imolay, Ryuhei Mizutani, Taihei Oki, Tamás Schwarcz. <br><b>Problems on Group-Labeled Matroid Bases</b>. <br>51st EATCS International Colloquium on Automata, Languages, and Programming (ICALP 2024), pp. 86:1–86:20. [<a href= "https://doi.org/10.4230/LIPIcs.ICALP.2024.86" target="_blank" >Proceeding</a>] [<a href= "https://arxiv.org/abs/2402.16259" target="_blank" >arXiv</a>]</li>
-				<li>Ryuhei Mizutani, Yuki Yoshida. <br><b>Polynomial Algorithms to Minimize 2/3-Submodular Functions</b>. <br>25th Conference on Integer Programming and Combinatorial Optimization (IPCO 2024), pp. 323–336. [<a href= "https://doi.org/10.1007/978-3-031-59835-7_24" target="_blank" >Proceeding</a>]</li>
-				<li>Hiroshi Hirai, Ryuhei Mizutani. <br><b>Minimum 0-Extension Problems on Directed Metrics</b>. <br>Discrete Optimization, 40 (2021), 25 pages. [<a href= "https://doi.org/10.1016/j.disopt.2021.100642" target="_blank" >Journal</a>] [<a href= "https://arxiv.org/abs/2006.00153" target="_blank" >arXiv</a>]<br>*A preliminary version has appeared in Mathematical Foundations of Computer Science (MFCS 2020), pp. 46:1–46:13. [<a href= "https://doi.org/10.4230/LIPIcs.MFCS.2020.46" target="_blank" >Proceeding</a>]</li>
-			</ul>
-		</section>
-		<section id="preprint">
-			<h2>プレプリント</h2>
-			<ul>
-				<li>Ryuhei Mizutani. <br><b>An Approximation Algorithm for Monotone Submodular Cost Allocation.</b> <br>arXiv preprints, arXiv:2511.00470, 2025. [<a href= "https://arxiv.org/abs/2511.00470" target="_blank" >arXiv</a>]</li>
-				<li>Ryuhei Mizutani. <br><b>A Polynomial Algorithm for Minimizing <span>\( k \)-Distant Submodular Functions.</span></b> <br>arXiv preprints, arXiv:2407.05127, 2024. [<a href= "https://arxiv.org/abs/2407.05127" target="_blank" >arXiv</a>]</li>
-			</ul>
-		</section>
-		<section id="international">
-			<h2>国際学会発表</h2>
-			<ul>
-				<li>Ryuhei Mizutani. <br><b>A Polynomial Algorithm for Minimizing <span>\( k \)-Distant Submodular Functions.</b> <br>The 13th Hungarian-Japanese Symposium on Discrete Mathematics and Its Applications, Tokyo, Japan, May 2025. </li>
-				<li>Ryuhei Mizutani, Yuki Yoshida. <br><b>Polynomial Algorithms to Minimize 2/3-Submodular Functions.</b> <br>25th Conference on Integer Programming and Combinatorial Optimization (IPCO 2024), Wrocław, Poland, July 2024.</li>
-				<li>Ryuhei Mizutani. <br><b>Supermodular Extension of Vizing’s Edge-Coloring Theorem.</b> <br>SIAM Conference on Optimization (OP23), Seattle, U.S., June 2023. </li>
-				<li>Ryuhei Mizutani. <br><b>Supermodular Extension of Vizing’s Edge-Coloring Theorem.</b> <br>The 12th Japanese-Hungarian Symposium on Discrete Mathematics and Its Applications, Budapest, Hungary, March 2023. </li>
-				<li>Hiroshi Hirai and Ryuhei Mizutani. <br><b>Minimum 0-Extension Problems on Directed Metrics.</b> <br>Mathematical Foundations of Computer Science (MFCS 2020), Prague, Czech Republic, August, 2020.</li>
-            </ul>
-		</section>
-		<section id="domestic">
-			<h2>国内学会発表</h2>
-			<ul>
-				<li>水谷隆平．<br><b>k-距離劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b> <br>COMP-AFSA学生シンポジウム，東京都市大学，東京，2025年3月．</li>
-				<li>水谷隆平．<br><b>k-距離劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b> <br>日本オペレーションズ・リサーチ学会 2025年春季研究発表会，成蹊大学，東京，2025年3月．</li>
-				<li>水谷隆平，吉田勇輝． <br><b>2/3-劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b> <br>最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2024，筑波大学，茨城，2024年5月．</li>
-				<li>水谷隆平，吉田勇輝．<br><b>2/3-劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b> <br>日本応用数理学会 第20回研究部会連合発表会，長岡技術科学大学，新潟，2024年3月．</li>
-				<li>水谷隆平．<br><b>三重劣モジュラ関数の諸性質．</b> <br>最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2023，筑波大学，茨城，2023年5月．</li>
-				<li>水谷隆平．<br><b>優モジュラ版Vizingの辺彩色定理．</b> <br>離散数学とその応用研究集会 (JCCA 2022)，成蹊大学，東京，2022年8月．</li>
-				<li>水谷隆平．<br><b>Vizingの辺彩色定理の優モジュラ的拡張．</b> <br>最適化手法とアルゴリズム (SOMA) —未来を担う若手研究者の集い 2022—，東京大学，東京，2022年6月．</li>
-				<li>水谷隆平．<br><b>Vizingの定理の優モジュラ的拡張．</b> <br>日本応用数理学会 第18回研究部会連合発表会，オンライン，2022年3月．</li>
-				<li>平井広志，水谷隆平．<br><b>有向距離空間上の最小ゼロ拡張問題．</b> <br>日本応用数理学会 2020年度年会，オンライン，2020年9月．</li>
-				<li>水谷隆平，平井広志．<br><b>有向距離空間上の最小ゼロ拡張問題．</b> <br>日本応用数理学会 第16回研究部会連合発表会，中央大学，東京，2020年3月．</li>
-            </ul>
-		</section>
-		<section id="honor">
-			<h2>受賞</h2>
-			<ul>
-				<li>最優秀論文賞，COMP-AFSA学生シンポジウム，2025年3月．</li>
-				<li>最優秀発表賞，最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2024，2024年5月．</li>
-            </ul>
-		</section>
-		<section id="link">
-			<h2>リンク</h2>
-			<ul>
-				<li><a href= "https://www.jst.go.jp/erato/kojima/member/index.html#inner05" target="_blank" >ERATO 小島マーケットデザインプロジェクト 離散数学グループ</a></li>
-				<li><a href= "https://www.opt.mist.i.u-tokyo.ac.jp/" target="_blank" >数理情報第7研究室</a></li>
-            </ul>
-		</section>
-	</main>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <h1>水谷隆平 (Ryuhei Mizutani)</h1>
+      </div>
+
+      <nav aria-label="ページ内リンク">
+        <ul>
+          <li><a class="pill" href="index_en.html">English Version</a></li>
+          <li><a class="pill" href="#paper">論文</a></li>
+          <li><a class="pill" href="#international">発表</a></li>
+          <li><a class="pill" href="#link">リンク</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="topcard" id="about">
+      <p>慶應義塾大学 大学院理工学研究科 研究員（ERATO 小島マーケットデザインプロジェクト 離散数学グループ所属）</p>
+      <p>連絡先: mizutani [at] math.keio.ac.jp<br><s>ryuhei_mizutani [at] mist.i.u-tokyo.ac.jp</s></p>
+    </div>
+
+    <section id="interest">
+      <h2>興味</h2>
+      <p style="margin:0;">組合せ最適化，離散構造，マトロイド理論，グラフ理論，ゲーム理論．</p>
+    </section>
+
+    <section id="keireki">
+      <h2>経歴</h2>
+      <ul>
+        <li>2025年4月- 慶應義塾大学 大学院理工学研究科 研究員</li>
+        <li>2025年3月 東京大学 大学院情報理工学系研究科 数理情報学専攻 博士課程 修了 博士（情報理工学）取得</li>
+        <li>2022年3月 東京大学 大学院情報理工学系研究科 数理情報学専攻 修士課程 修了</li>
+        <li>2020年3月 東京大学 工学部計数工学科 卒業</li>
+      </ul>
+    </section>
+
+    <section id="paper">
+      <h2>査読付き論文</h2>
+      <ul class="pubs">
+        <li>
+          Ryoga Mahara, Ryuhei Mizutani, Taihei Oki, Tomohiko Yokoyama.<br>
+          <b>Position Fair Mechanisms Allocating Indivisible Goods.</b><br>
+          <i>Proceedings of the 40th Annual AAAI Conference on Artificial Intelligence (AAAI 2026)</i>, to appear.
+          <span class="links">
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2409.06423" target="_blank" rel="noopener">arXiv</a>
+          </span>
+        </li>
+
+        <li>
+          Ryuhei Mizutani.<br>
+          <b>Supermodular Extension of Vizing’s Edge-Coloring Theorem</b>.<br>
+          <i>SIAM Journal on Discrete Mathematics</i>, 39:4 (2025), pp. 2275–2295.
+          <span class="links">
+            <a class="tagbtn journal" href="https://epubs.siam.org/doi/10.1137/24M1636253" target="_blank" rel="noopener">Journal</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2211.07150" target="_blank" rel="noopener">arXiv</a>
+          </span>
+        </li>
+
+        <li>
+          Dániel Garamvölgyi, Ryuhei Mizutani, Taihei Oki, Tamás Schwarcz, Yutaro Yamaguchi.<br>
+          <b>Towards the Proximity Conjecture on Group-Labeled Matroids</b>.<br>
+          <i>Proceedings of the 52nd EATCS International Colloquium on Automata, Languages, and Programming (ICALP 2025)</i>,
+          pp. 85:1–85:17.
+          <span class="links">
+            <a class="tagbtn conf" href="https://doi.org/10.4230/LIPIcs.ICALP.2025.85" target="_blank" rel="noopener">Conference</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2411.06771" target="_blank" rel="noopener">arXiv</a>
+          </span>
+        </li>
+
+        <li>
+          Florian Hörsch, András Imolay, Ryuhei Mizutani, Taihei Oki, Tamás Schwarcz.<br>
+          <b>Problems on Group-Labeled Matroid Bases</b>.<br>
+          <i>Proceedings of the 51st EATCS International Colloquium on Automata, Languages, and Programming (ICALP 2024)</i>,
+          pp. 86:1–86:20.
+          <span class="links">
+            <a class="tagbtn conf" href="https://doi.org/10.4230/LIPIcs.ICALP.2024.86" target="_blank" rel="noopener">Conference</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2402.16259" target="_blank" rel="noopener">arXiv</a>
+          </span>
+        </li>
+
+        <li>
+          Ryuhei Mizutani, Yuki Yoshida.<br>
+          <b>Polynomial Algorithms to Minimize 2/3-Submodular Functions</b>.<br>
+          <i>Proceedings of the 25th Conference on Integer Programming and Combinatorial Optimization (IPCO 2024)</i>,
+          pp. 323–336.
+          <span class="links">
+            <a class="tagbtn conf" href="https://doi.org/10.1007/978-3-031-59835-7_24" target="_blank" rel="noopener">Conference</a>
+          </span>
+        </li>
+
+        <li>
+          Hiroshi Hirai, Ryuhei Mizutani.<br>
+          <b>Minimum 0-Extension Problems on Directed Metrics</b>.<br>
+          <i>Discrete Optimization</i>, 40 (2021), 25 pages.
+          <span class="links">
+            <a class="tagbtn journal" href="https://doi.org/10.1016/j.disopt.2021.100642" target="_blank" rel="noopener">Journal</a>
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2006.00153" target="_blank" rel="noopener">arXiv</a>
+          </span><br>
+          <i>Proceedings of the 45th International Symposium on Mathematical Foundations of Computer Science (MFCS 2020)</i>, pp. 46:1–46:13.
+          <span class="links">
+            <a class="tagbtn conf" href="https://doi.org/10.4230/LIPIcs.MFCS.2020.46" target="_blank" rel="noopener">Conference</a>
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="preprint">
+      <h2>プレプリント</h2>
+      <ul class="pubs">
+        <li>
+          Ryuhei Mizutani.<br>
+          <b>Minimizing Submodular Functions over Hierarchical Families.</b><br>
+          <i>arXiv preprints</i>, arXiv:2601.14805, 2026.
+          <span class="links">
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2601.14805" target="_blank" rel="noopener">arXiv</a>
+          </span>
+        </li>
+        <li>
+          Ryuhei Mizutani.<br>
+          <b>An Approximation Algorithm for Monotone Submodular Cost Allocation.</b><br>
+          <i>arXiv preprints</i>, arXiv:2511.00470, 2025.
+          <span class="links">
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2511.00470" target="_blank" rel="noopener">arXiv</a>
+          </span>
+        </li>
+
+        <li>
+          Ryuhei Mizutani.<br>
+          <b>A Polynomial Algorithm for Minimizing <span>\( k \)</span>-Distant Submodular Functions.</b><br>
+          <i>arXiv preprints</i>, arXiv:2407.05127, 2024.
+          <span class="links">
+            <a class="tagbtn arxiv" href="https://arxiv.org/abs/2407.05127" target="_blank" rel="noopener">arXiv</a>
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="international">
+      <h2>国際学会発表</h2>
+      <ul class="pubs">
+        <li>Ryuhei Mizutani.<br><b>A Polynomial Algorithm for Minimizing <span>\( k \)</span>-Distant Submodular Functions.</b><br>The 13th Hungarian-Japanese Symposium on Discrete Mathematics and Its Applications, Tokyo, Japan, May 2025.</li>
+        <li>Ryuhei Mizutani, Yuki Yoshida.<br><b>Polynomial Algorithms to Minimize 2/3-Submodular Functions.</b><br>The 25th Conference on Integer Programming and Combinatorial Optimization (IPCO 2024), Wrocław, Poland, July 2024.</li>
+        <li>Ryuhei Mizutani.<br><b>Supermodular Extension of Vizing’s Edge-Coloring Theorem.</b><br>SIAM Conference on Optimization (OP23), Seattle, U.S., June 2023.</li>
+        <li>Ryuhei Mizutani.<br><b>Supermodular Extension of Vizing’s Edge-Coloring Theorem.</b><br>The 12th Japanese-Hungarian Symposium on Discrete Mathematics and Its Applications, Budapest, Hungary, March 2023.</li>
+        <li>Hiroshi Hirai and Ryuhei Mizutani.<br><b>Minimum 0-Extension Problems on Directed Metrics.</b><br>The 45th International Symposium on Mathematical Foundations of Computer Science (MFCS 2020), Prague, Czech Republic, August 2020.</li>
+      </ul>
+    </section>
+
+    <section id="domestic">
+      <h2>国内学会発表</h2>
+      <ul class="pubs">
+        <li>水谷隆平．<br><b><span>\( k \)</span>-距離劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>電子情報通信学会 総合大会 COMP-AFSA学生シンポジウム，東京都市大学，東京，2025年3月．</li>
+        <li>水谷隆平．<br><b><span>\( k \)</span>-距離劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>日本オペレーションズ・リサーチ学会 2025年春季研究発表会，成蹊大学，東京，2025年3月．</li>
+        <li>水谷隆平，吉田勇輝．<br><b>2/3-劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>日本オペレーションズ・リサーチ学会研究部会 最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2024，筑波大学，茨城，2024年5月．</li>
+        <li>水谷隆平，吉田勇輝．<br><b>2/3-劣モジュラ関数最小化問題に対する多項式時間アルゴリズム．</b><br>日本応用数理学会 第20回研究部会連合発表会，長岡技術科学大学，新潟，2024年3月．</li>
+        <li>水谷隆平．<br><b>三重劣モジュラ関数の諸性質．</b><br>日本オペレーションズ・リサーチ学会研究部会 最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2023，筑波大学，茨城，2023年5月．</li>
+        <li>水谷隆平．<br><b>優モジュラ版Vizingの辺彩色定理．</b><br>離散数学とその応用研究集会 (JCCA 2022)，成蹊大学，東京，2022年8月．</li>
+        <li>水谷隆平．<br><b>Vizingの辺彩色定理の優モジュラ的拡張．</b><br>日本オペレーションズ・リサーチ学会研究部会 最適化手法とアルゴリズム (SOMA) —未来を担う若手研究者の集い 2022—，東京大学，東京，2022年6月．</li>
+        <li>水谷隆平．<br><b>Vizingの定理の優モジュラ的拡張．</b><br>日本応用数理学会 第18回研究部会連合発表会，オンライン，2022年3月．</li>
+        <li>平井広志，水谷隆平．<br><b>有向距離空間上の最小ゼロ拡張問題．</b><br>日本応用数理学会 2020年度年会，オンライン，2020年9月．</li>
+        <li>水谷隆平，平井広志．<br><b>有向距離空間上の最小ゼロ拡張問題．</b><br>日本応用数理学会 第16回研究部会連合発表会，中央大学，東京，2020年3月．</li>
+      </ul>
+    </section>
+
+    <section id="honor">
+      <h2>受賞</h2>
+      <ul>
+        <li>最優秀論文賞，電子情報通信学会 総合大会 COMP-AFSA学生シンポジウム，2025年3月．</li>
+        <li>最優秀発表賞，日本オペレーションズ・リサーチ学会研究部会 最適化の理論とアルゴリズム (RAOTA)：未来を担う若手研究者の集い 2024，2024年5月．</li>
+      </ul>
+    </section>
+
+    <section id="link">
+      <h2>リンク</h2>
+      <ul>
+        <li><a href="https://www.jst.go.jp/erato/kojima/member/index.html#inner05" target="_blank" rel="noopener">ERATO 小島マーケットデザインプロジェクト 離散数学グループ</a></li>
+        <li><a href="https://www.opt.mist.i.u-tokyo.ac.jp/" target="_blank" rel="noopener">数理情報第7研究室</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Ryuhei Mizutani
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
